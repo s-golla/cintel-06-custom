@@ -1,5 +1,4 @@
-shiny
+shiny-express
 pandas
-plotly
+matplotlib
 seaborn
-reactive

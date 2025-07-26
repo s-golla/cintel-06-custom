@@ -1,43 +1,47 @@
-# 💸 Restaurant Tips Dashboard
+# Restaurant Tips Dashboard
 
-This project is a Shiny for Python web application that visualizes restaurant tips data using the built-in `seaborn` tips dataset, with interactive controls and a matplotlib chart.
+An interactive dashboard built with Shiny Express for Python, visualizing restaurant tips data from the seaborn library.
 
 ## Features
-- Select day of the week to filter data
-- Option to include/exclude smoker data
-- Data table and summary info
-- Interactive scatter plot (total bill vs tip) using matplotlib
-- Uses the built-in dataset, so no external data file is required
 
-## Setup Instructions
+- Sidebar with emoji icons, colored headers, and filters:
+  - Day of the week
+  - Smoker status
+  - Total bill range (slider)
+  - Sex
+- Metric cards for:
+  - Total bills analyzed
+  - Average tip percentage
+  - Number of records
+- Charts:
+  - Tip vs Total Bill (scatter plot)
+  - Average Tip by Day (bar chart)
+  - Tip Distribution by Sex (violin plot)
+- Filtered data table
 
-### 1. Create and Activate Virtual Environment
-A virtual environment is already set up in `.venv`. To activate it:
+## Usage
 
-```powershell
-.venv\Scripts\Activate
-```
+1. Install requirements:
+   ```powershell
+   pip install -r requirements.txt
+   ```
+2. Run the dashboard:
+   ```powershell
+   shiny run --reload dashboard/app.py
+   ```
 
-### 2. Install Requirements
-Install all required packages:
+## Tech Stack
 
-```powershell
-pip install -r requirements.txt
-```
-
-
-
-### 3. Run the App
-Start the Shiny app (from the project root):
-
-```powershell
-shiny run --reload dashboard/app.py
-```
-
+- Shiny Express for Python
+- pandas
+- matplotlib
+- seaborn
 
 ## File Structure
-- `dashboard/app.py` — Main Shiny app code
-- `requirements.txt` — Python dependencies
+
+- dashboard/app.py: Main dashboard code
+- requirements.txt: Python dependencies
+- README.md: Project documentation
 - `README.md` — Project instructions
 
 ## Usage
