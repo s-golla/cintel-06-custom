@@ -1,7 +1,5 @@
 from shiny import App, reactive, render, ui
-import pandas as pd
-import plotly.express as px
-from pathlib import Path
+import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load dataset
@@ -56,24 +54,19 @@ def server(input, output, session):
         return f"Showing data for day: {input.selected_day()}, Smoker included: {input.show_smoker()}"
 
     @output
-    @render.image
+    @render.plot
     def chart():
         df = filtered_data()
-        fig = px.scatter(
-            df,
-            x="total_bill",
-            y="tip",
-            color="sex",
-            title="Tip vs Total Bill"
-        )
-        img_path = "chart.png"
-        fig.write_image(img_path)
-        return {
-            "src": img_path,
-            "alt": "Tip vs Total Bill",
-            "width": "auto",
-            "height": "400px"
-        }
+        fig, ax = plt.subplots()
+        colors = {'Male': 'blue', 'Female': 'red'}
+        for sex, group in df.groupby('sex', observed=False):
+            ax.scatter(group['total_bill'], group['tip'], label=sex, color=colors.get(sex, 'gray'))
+        ax.set_xlabel('Total Bill')
+        ax.set_ylabel('Tip')
+        ax.set_title('Tip vs Total Bill')
+        ax.legend()
+        fig.tight_layout()
+        return fig
 
     @output
     @render.data_frame

@@ -1,6 +1,5 @@
 shiny
 pandas
 plotly
-kaleido
 seaborn
 reactive
