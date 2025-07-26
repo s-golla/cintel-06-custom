@@ -1,13 +1,13 @@
 # 💸 Restaurant Tips Dashboard
 
-This project is a Shiny for Python web application that visualizes restaurant tips data from `data/tips.csv` using interactive controls and a Plotly chart.
+This project is a Shiny for Python web application that visualizes restaurant tips data using the built-in `seaborn` tips dataset, with interactive controls and a Plotly chart.
 
 ## Features
 - Select day of the week to filter data
 - Option to include/exclude smoker data
 - Data table and summary info
 - Interactive scatter plot (total bill vs tip)
-- Auto-reloads data when `data/tips.csv` changes
+- Uses the built-in dataset, so no external data file is required
 
 ## Setup Instructions
 
@@ -40,17 +40,20 @@ shiny run --reload dashboard/app.py
 
 ## File Structure
 - `dashboard/app.py` — Main Shiny app code
-- `data/tips.csv` — Data file
 - `requirements.txt` — Python dependencies
 - `README.md` — Project instructions
 
 ## Usage
 - Select a day and toggle smoker data to filter the table and chart.
 - The chart is saved as `chart.png` and displayed as an image in the app.
+- No need to provide a data file; the app loads the tips dataset automatically.
 
 ## Troubleshooting
 - If you see errors about missing packages, ensure you have activated the virtual environment and installed all requirements.
 - For image export issues, make sure `kaleido` is installed.
+
+## Deployment Notes
+This app requires a Python server environment to run. GitHub Pages only supports static content and cannot host Python apps. To deploy your Shiny for Python app, use a platform like [Shiny for Python hosting](https://www.shiny.posit.co/py/), Heroku, or similar Python web hosting services.
 
 ---
 

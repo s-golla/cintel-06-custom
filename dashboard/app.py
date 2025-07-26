@@ -2,12 +2,10 @@ from shiny import App, reactive, render, ui
 import pandas as pd
 import plotly.express as px
 from pathlib import Path
+import seaborn as sns
 
-# ===== Continuous update setup using reactive.file_reader =====
-@reactive.file_reader(Path("data/tips.csv"))
-def read_tips():
-    # Automatically reload data when file changes
-    return pd.read_csv("data/tips.csv")
+# Load dataset
+tips = sns.load_dataset("tips")
 
 # ===== UI layout =====
 app_ui = ui.page_fluid(
@@ -40,7 +38,7 @@ def server(input, output, session):
     
     @reactive.calc
     def filtered_data():
-        df = read_tips()
+        df = tips
         
         # Filter by day if not 'All'
         if input.selected_day() != "All":
